@@ -50,7 +50,15 @@ Tukey Fences for the lnVR across the 10 studies can be found to be:
 ```
 accordingly, the lnVR for Boldt et al. is an *extreme* outlier using a non-parametric approach.
 
-
+Using a parametric approach and computing prediction intervals for the lnVR across the 10 studies:
+```
+     Sigma level         L         U
+[1,]           3 -1.095897 0.7689951
+[2,]           4 -1.819421 1.4925199
+[3,]           5 -3.270308 2.9434067
+[4,]           6 -6.560359 6.2334581
+```
+accordingly, the lnVR for Boldt et al. is an *extreme* outlier using a parametric approach (4-sigma event).
 
 
 
