@@ -36,7 +36,19 @@ We used the data from Figure 2 of Curran JD et al. Comparison of Balanced Crysta
   ```
   We thus updated Chaussard et al. 2020 to have the following mean (SD; n): -0.9 (2.3; 14) and -2.1 (4.5; 14) but also tested the sensitivity of this correction and used the data presented in Figure 2 as published in a secondary analysis (see `Boldt_DIVBTA.R`).
 
+The lnVR for Boldt et al. can be computed to be:
+```
+> xT=-5.9;sT=1.2;nT=25;xC=0.2;sC=0.2;nC=25
+> (lnVR = log(sT/sC)+1/(2*(nT-1))-1/(2*(nC-1)))
+[1] 1.791759
+```
 
+Tukey Fences for the lnVR across the 10 studies can be found to be: 
+```
+   extreme_L     mild_L    mild_U extreme_U
+1 -0.9681458 -0.6301572 0.2711457 0.6091342
+```
+accordingly, the lnVR for Boldt et al. is an *extreme* outlier using a non-parametric approach.
 
 
 
