@@ -10,7 +10,8 @@ diff_var <- function(dat){
   dat$lnVR = log(dat$sT/dat$sC)+1/(2*(dat$nT-1))-1/(2*(dat$nC-1))
   dat$sd_lnVR = sqrt(1/(2*(dat$nT-1))+1/(2*(dat$nC-1)))
   dat$var_lnVR =  dat$sd_lnVR^2
-  dat$p_lnVR = 2*exp(pnorm(abs(dat$lnVR/dat$sd_lnVR),lower.tail = F,log.p = T))
+  dat$p_lnVR_norm = 2*exp(pnorm(abs(dat$lnVR/dat$sd_lnVR),lower.tail = F,log.p = T))
+  dat$p_lnVR_t = 2*exp(pt(abs(dat$lnVR/dat$sd_lnVR),df = dat$nT + dat$nC - 2,lower.tail = F,log.p = T))
   return(dat)
 }
 
@@ -18,7 +19,7 @@ diff_var <- function(dat){
 # -5.9 +/- 1.2 mmol/L vs +0.2 +/- 0.2 mmol/L (n=25)
 diff_var(data.frame(author="Boldt",
                     xT=-5.9,sT=1.2,nT=25,
-                    xC=0.2,sC=0.2,nC=25))[,c("p_ratio_var","p_lnVR")]
+                    xC=0.2,sC=0.2,nC=25))[,c("p_ratio_var","p_lnVR_norm","p_lnVR_t")]
 
 comparatorValues = read.csv("base.csv")
 
