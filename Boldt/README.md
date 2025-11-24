@@ -35,7 +35,7 @@ sd_lnVR = sqrt(1/(2*(nT-1))+1/(2*(nC-1)))
 [1] 1.667139e-18
 ```
 
-The DIVBTA from Boldt et al. **is** statistically significant (p=1.7e-18). 
+The DIVBTA from Boldt et al. **is** statistically significant (p=3.1e-13). 
 
 **Is the DIVBTA from Boldt et al an outlier?** 
 
