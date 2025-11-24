@@ -14,9 +14,23 @@ If we test the significance of the lnVR from Boldt et al:
 
 ```
 xT=-5.9;sT=1.2;nT=25;xC=0.2;sC=0.2;nC=25
+# F-test
+ratio_var = sT^2/sC^2
+(2 * ifelse(ratio_var < 1,
+  pf(ratio_var, df1=nT-1, df2=nC-1, lower.tail = TRUE),
+  pf(ratio_var, df1=nT-1, df2=nC-1, lower.tail = FALSE)))
+
+[1] 3.111791e-13
+
 lnVR = log(sT/sC)+1/(2*(nT-1))-1/(2*(nC-1))
 sd_lnVR = sqrt(1/(2*(nT-1))+1/(2*(nC-1)))
-(p_lnVR = 2*exp(pnorm(abs(lnVR/sd_lnVR),lower.tail = F,log.p = T)))
+# T-test:
+(2*exp(pt(abs(lnVR/sd_lnVR),df=nT+nC-2,lower.tail = F,log.p = T)))
+
+[1] 1.509264e-11
+
+# Assumes normality:
+(2*exp(pnorm(abs(lnVR/sd_lnVR),lower.tail = F,log.p = T)))
 
 [1] 1.667139e-18
 ```
