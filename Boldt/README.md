@@ -48,7 +48,7 @@ We used the data from Figure 2 of Curran JD et al. Comparison of Balanced Crysta
   > sqrt(14)*(0.6-(-4.6))/(2*qt(0.025,df=14-1,lower.tail = F))
   [1] 4.503078
   ```
-  We thus updated Chaussard et al. 2020 to have the following mean (SD; n): -0.9 (2.3; 14) and -2.1 (4.5; 14) but also tested the sensitivity of this correction and used the data presented in Figure 2 as published in a secondary analysis (see `Boldt_DIVBTA.R`).
+  We thus updated Chaussard et al. 2020 (author = Chaussard_1 in base.csv) to have the following mean (SD; n): -0.9 (2.3; 14) and -2.1 (4.5; 14). In primary analysis below we used the original data from Chaussard et al. 2020 (author = Chaussard_2 in base.csv; the data presented in Figure 2 apart from Benoit 2016 noted above) but also tested using the updated Chaussard et al. 2020 data in a secondary analysis (see `Boldt_DIVBTA.R`).
 
 The lnVR for Boldt et al. can be computed to be:
 ```
