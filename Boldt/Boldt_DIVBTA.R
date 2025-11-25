@@ -73,6 +73,7 @@ fig2_chaussard_parametric = cbind(Sigma = c(3,4,5,6),
             robu_predict_interval(metaanalysis_lnVRs_set1, level = 1-(1-pnorm(5))*2),
             robu_predict_interval(metaanalysis_lnVRs_set1, level = 1-(1-pnorm(6))*2)))
 colnames(fig2_chaussard_parametric) = c("Sigma level","L","U")
+(fig2_chaussard_parametric)
 
 # Updated Chaussard 2020 values
 updated_chaussard_parametric = cbind(Sigma = c(3,4,5,6),
