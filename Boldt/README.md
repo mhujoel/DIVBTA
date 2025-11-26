@@ -39,16 +39,8 @@ The DIVBTA from Boldt et al. **is** statistically significant (p=3.1e-13).
 
 **Is the DIVBTA from Boldt et al an outlier?** 
 
-We used the data from Figure 2 of Curran JD et al. Comparison of Balanced Crystalloid Solutions: A Systematic Review and Meta-Analysis of Randomized Controlled Trials. *Crit Care Explor.* 2021;3(5):e0398 which had base excess values from randomized controlled trials (provided in `base.csv`). We used the presented 10 values with 2 modifications:
+We used the data from Figure 2 of Curran JD et al. Comparison of Balanced Crystalloid Solutions: A Systematic Review and Meta-Analysis of Randomized Controlled Trials. *Crit Care Explor.* 2021;3(5):e0398 which had base excess values from randomized controlled trials (provided in `base.csv`). We used the presented 10 values with one modification:
 * Benoit 2016: the standard deviation for the comparator was changed from 0.7 to 1.26; while the SD for the Plasmalyte for Benoit was correctly estimated from the quartile range as 0.96 (SD ~ IQR/1.35 = 1.3/1.35 = 0.96) the SD for the comparator for Benoit, when derived the same way, should be 1.26 not 0.07 (1.7/1.35 = 1.26). 
-* Chaussard 2020: it is unclear where the standard deviations (and mean values) were obtained. From the abstract, the following data is available: "-0.9 (95% CI: -1.8 – 0.9) vs. -2.1 (95% CI: -4.6 – 0.6)" (each arm had $n=14$). Using the correspondence between 95% CI and SD $SD = \frac{U-L}{2 t_{\alpha/2}} * \sqrt{n}$  (assuming a t-distribution was used to construct the 95% CI)  we obtain the updated SD:
-  ```
-  > sqrt(14)*(0.9-(-1.8))/(2*qt(0.025,df = 14-1,lower.tail = F))
-  [1] 2.338137
-  > sqrt(14)*(0.6-(-4.6))/(2*qt(0.025,df=14-1,lower.tail = F))
-  [1] 4.503078
-  ```
-  We thus updated Chaussard et al. 2020 (author = Chaussard_1 in base.csv) to have the following mean (SD; n): -0.9 (2.3; 14) and -2.1 (4.5; 14). In primary analysis below we used the original data from Chaussard et al. 2020 (author = Chaussard_2 in base.csv; the data presented in Figure 2 apart from Benoit 2016 noted above) but also tested using the updated Chaussard et al. 2020 data in a secondary analysis (see `Boldt_DIVBTA.R`).
 
 The lnVR for Boldt et al. can be computed to be:
 ```
