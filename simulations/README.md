@@ -1,6 +1,6 @@
 # Simulation Studies
 
-R libraries required: sn; dplyr; fitdistrplus; doParallel; foreach; grid; magick; haven; parallel.
+R libraries required: dplyr; tidyr; doParallel; foreach
 
 # How we define 3-sigma outlier:
 
