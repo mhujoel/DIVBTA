@@ -2,46 +2,6 @@
 
 R libraries required: dplyr; tidyr; doParallel; foreach
 
-# How we define 3-sigma outlier:
-
-We use the data from Section 3 to estimate bounds for a 3-sigma outlier lnCVR for our simulation study:
-
-```
-library(robumeta); 
-diabetes_trials=read.csv("github_LnCVR.csv")
-# restrict to trials we are more confident in:
-diabetes_trials_confident = diabetes_trials[diabetes_trials$P_onesided > 0.025 &
-                                              diabetes_trials$P_onesided < 0.975 &
-                                              !is.na(diabetes_trials$P_onesided), ]
-# perform our meta-analysis using robumeta:
-fit <- robu(formula = LnCVR ~ 1,data=diabetes_trials_confident , 
-                     studynum = PMID, var.eff.size=var_LnCVR)
-
-level = 1-(1-pnorm(3))*2 # 3-sigma event
-# in simulations we assume no effect thus M*=0 
-
-# For df we can use N-2 as suggested by Introduction to Meta-Analysis (2nd edition)
-# Chapter 17 page 122 or fit$dfs provided by robumeta
-
-# we can test both df and the 3-sigma bounds they result in:
-# df we can use N-2 as suggested by Introduction to Meta-Analysis (2nd edition)
-# Chapter 17 page 122
-(df_val = fit$N - 2) ; p_crit <- (1 - level) / 2
-# [1] 173 <- 173 degrees of freedom 
-0 + c(-1, 1) *qt(p = p_crit, df = df_val, lower.tail = FALSE) *
-           sqrt(as.numeric(fit$mod_info$tau.sq) + as.numeric(fit$reg_table[3])^2)
-# [1] -0.5001689  0.5001689
-
-# fit$dfs provided by robumeta
-(df_val = fit$dfs) ; p_crit <- (1 - level) / 2
-# [1] 143.3904 <- ~143 degrees of freedom
-0 + c(-1, 1) *qt(p = p_crit, df = df_val, lower.tail = FALSE) *
-  sqrt(as.numeric(fit$mod_info$tau.sq) + as.numeric(fit$reg_table[3])^2)
-# [1] -0.5016838  0.5016838
-
-# based on the above we use -0.5 and 0.5 to define 3-sigma outliers in our simulation studies
-```
-
 
 
 # Heterogeneous treatment effects
