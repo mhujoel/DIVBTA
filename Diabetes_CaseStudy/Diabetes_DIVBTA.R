@@ -1,4 +1,4 @@
-library(robumeta);  library(dplyr)
+library(robumeta);  library(dplyr); library(haven)
 options(dplyr.summarise.inform=F)
 lnCVR <- function(dat,r_CT=0.6){
   # note if dependent ( abs(crossoverrho1) > 0 and < 1); note in this case dat$nT = dat$nC
@@ -41,7 +41,7 @@ lnCVR <- function(dat,r_CT=0.6){
 }
 
 
-hba1c <- read_sas("plos.sas7bdat")
+hba1c <- read_sas("github.sas7bdat")
 hba1c$reliable = ifelse(hba1c$P_onesided < 0.025 | hba1c$P_onesided > 0.975 | is.na(hba1c$P_onesided),
                         0,1)
 hba1c = lnCVR(hba1c) # computes lnCVR (also included in file)
