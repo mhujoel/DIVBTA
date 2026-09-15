@@ -13,8 +13,8 @@ The work includes a published case study of diabetes trials, a case study of the
 
 | Folder | Contents |
 | --- | --- |
-| [diabetes-case-study](diabetes-case-study) | Data and code for the diabetes case study in the PLOS ONE article and the submitted manuscript |
-| [boldt-case-study](boldt-case-study) | Data and code for the Boldt trial example |
+| [diabetes-case-study](Diabetes_CaseStudy) | Data and code for the diabetes case study in the PLOS ONE article and the submitted manuscript |
+| [boldt-case-study](Boldt_CaseStudy) | Data and code for the Boldt trial example |
 | [simulations](simulations) | Simulation code used to assess the screening methods |
 
 See the README in each folder for file lists and analysis scripts.
